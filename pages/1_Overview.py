@@ -7,7 +7,7 @@ from datetime import datetime as dt
 import matplotlib.pyplot as plt
 import time
 from plotly.subplots import make_subplots
-import plost
+# import plost
 from urllib.request import urlopen 
 import json
 import requests
@@ -52,7 +52,7 @@ data_json=json.loads(data)
 data=data_json["uluna"]
 a3.metric("Gas price", str(data) + ' uluna')
 
-st.markdown('# Transactions')
+st.markdown('## Transactions')
 stats='https://node-api.flipsidecrypto.com/api/v2/queries/386e354e-562e-435d-8751-567563957301/data/latest'
 stats=pd.read_json(stats).sort_values(by='DATE',ascending=True)
 number_of_transactions_fig = px.area(
@@ -70,7 +70,7 @@ st.write(number_of_transactions_fig)
 
 c1, c2 = st.columns((60,40))
 with c1:
-    st.markdown('### Heatmap')
+    st.markdown('## Unique wallets')
     Number_of_unique_wallets_fig = px.area(
         stats,
         x='DATE',
@@ -78,14 +78,14 @@ with c1:
         title='Number of unique wallets',
         labels={'DATE':'Date','NUMBER_OF_UNIQUE_WALLETS':'Number of unique wallets'},
         color_discrete_sequence=px.colors.qualitative.Vivid,
-        width=800)
+        width=1368)
 
     Number_of_unique_wallets_fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(215,215,215,255)',})
     Number_of_unique_wallets_fig.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
     st.write(Number_of_unique_wallets_fig)
 
 with c2:
-    st.markdown('### Bar chart')
+    st.markdown('## New users')
     daily_new_users='https://node-api.flipsidecrypto.com/api/v2/queries/54e00538-842d-407b-b5ce-f8519e0d03bd/data/latest'
     daily_new_users=pd.read_json(daily_new_users).sort_values(by='DATE',ascending=True)
     daily_new_users_fig = px.area(
