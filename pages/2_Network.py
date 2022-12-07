@@ -12,7 +12,7 @@ from urllib.request import urlopen
 import json
 import requests
 from PIL import  Image
-from dash import Dash, dcc
+
 
 
 
