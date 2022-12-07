@@ -7,7 +7,7 @@ from datetime import datetime as dt
 import matplotlib.pyplot as plt
 import time
 from plotly.subplots import make_subplots
-import plost
+
 from urllib.request import urlopen 
 import json
 import requests
