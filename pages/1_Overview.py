@@ -62,7 +62,7 @@ number_of_transactions_fig = px.area(
     title='Number of Transactions',
     labels={'DATE':'Date','NUMBER_OF_TRANSACTIONS':'Number of transactions'},
     color_discrete_sequence=px.colors.qualitative.Vivid,
-    width=1368)
+    width=800)
 number_of_transactions_fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(215,215,215,255)',})
 number_of_transactions_fig.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
 st.write(number_of_transactions_fig)
