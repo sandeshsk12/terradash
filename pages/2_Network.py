@@ -12,6 +12,10 @@ from urllib.request import urlopen
 import json
 import requests
 from PIL import  Image
+<<<<<<< HEAD
+=======
+
+>>>>>>> 24a56f021021a83ee6e7d617f6d0d5a2f522351d
 
 
 
