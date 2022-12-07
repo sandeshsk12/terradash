@@ -15,7 +15,7 @@ from PIL import  Image
 
 
 st.set_page_config(page_title="Data Explorer", layout="wide",initial_sidebar_state="expanded")
-st.markdown('# Transactions')
+st.markdown('# Wallets')
 st.sidebar.success("Do not collapse the sidebar")
 # st.sidebar.success("select a page above")
 
@@ -34,11 +34,17 @@ a1, a2, a3 = st.columns(3)
 
 
 
-number_of_wallets = "https://node-api.flipsidecrypto.com/api/v2/queries/012648ae-a89d-4504-93eb-68faf37fb394/data/latest"
-number_of_wallets = pd.read_json(number_of_wallets)
-a1.metric("Number of Transactions", number_of_wallets['NUMBER_OF_TRANSACTIONS'])
-a2.metric("Number of blocks", number_of_wallets['NUMBER_OF_BLOCKS'])
-a3.metric("Total Fees (uluna)", (number_of_wallets['TOTAL_FEES']))
+active_wallets = "https://node-api.flipsidecrypto.com/api/v2/queries/d1bdd659-c149-4d01-9c17-3b935dcf7792/data/latest"
+active_wallets = pd.read_json(active_wallets).sort_values(by='DATE',ascending=False)
+a1.metric('Number of users',active_wallets.iloc[0,2])
+a2.metric('Number of Active users',active_wallets.iloc[0,1])
+
+
+new_users = "https://node-api.flipsidecrypto.com/api/v2/queries/a8409feb-4c91-44b5-ae9c-f011eab30012/data/latest"
+new_users = pd.read_json(new_users).sort_values(by='DATE',ascending=False)
+a3.metric("Number of New Wallets", new_users.iloc[0,1]
+        
+)
 
 
 st.markdown('## Users')
