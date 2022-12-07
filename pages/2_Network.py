@@ -87,6 +87,68 @@ total_transaction_fee_per_week_fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0,
 total_transaction_fee_per_week_fig.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
 st.write(total_transaction_fee_per_week_fig)
 
+st.markdown('## Average transaction per block')
+average_transactions_per_block = px.area(
+    stats,
+    x='DATE',
+    y='AVG_TXN_PER_BLOCK',
+    title='Average transaction per block',
+    labels={'DATE':'Date','AVG_TXN_PER_BLOCK':'Number of transactions'},
+    color_discrete_sequence=px.colors.qualitative.Vivid,
+    width=1368)
+
+average_transactions_per_block.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(215,215,215,255)',})
+average_transactions_per_block.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
+st.write(average_transactions_per_block)
+
+st.markdown('## Average tps per week')
+tps='https://node-api.flipsidecrypto.com/api/v2/queries/0dbecbfb-d75e-4c9e-95b0-69ee37d372eb/data/latest'
+tps=pd.read_json(tps).sort_values(by='DATE',ascending=True)
+average_transactions_per_block = px.bar(
+    tps,
+    x='DATE',
+    y='AVG_TPS',
+    title='Average tps per week',
+    labels={'DATE':'Date','AVG_TPS':'Number of transactions per second'},
+    color_discrete_sequence=px.colors.qualitative.Vivid,
+    width=1368)
+
+average_transactions_per_block.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(215,215,215,255)',})
+average_transactions_per_block.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
+st.write(average_transactions_per_block)
+
+st.markdown('## Average block time per week')
+abt='https://node-api.flipsidecrypto.com/api/v2/queries/e90c0c6c-6ec3-422b-9c0d-3ed04c4aab85/data/latest'
+abt=pd.read_json(abt).sort_values(by='DATE',ascending=True)
+average_transactions_per_block = px.bar(
+    abt,
+    x='DATE',
+    y='AVG_BLOCK_TIME_MILLISECONDS',
+    title='Average block time per week',
+    labels={'DATE':'Date','AVG_BLOCK_TIME_MILLISECONDS':'Block time (ms)'},
+    color_discrete_sequence=px.colors.qualitative.Vivid,
+    width=1368)
+
+average_transactions_per_block.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(215,215,215,255)',})
+average_transactions_per_block.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
+st.write(average_transactions_per_block)
+
+st.markdown('## Transaction success ratio')
+sr='https://node-api.flipsidecrypto.com/api/v2/queries/08d050ee-f687-440c-85c8-8a5bb7279493/data/latest'
+sr=pd.read_json(sr).sort_values(by='DATE',ascending=True)
+sucess_ratio_fig = px.line(
+    sr,
+    x='DATE',
+    y='S_PERCENTAGE',
+    title='Average success ratio (daily)',
+    labels={'DATE':'Date','S_PERCENTAGE':'Success rato %'},
+    color_discrete_sequence=px.colors.qualitative.Vivid,
+    width=1368)
+
+sucess_ratio_fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(215,215,215,255)',})
+sucess_ratio_fig.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
+st.write(sucess_ratio_fig)
+
 
 
 
