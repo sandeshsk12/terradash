@@ -29,7 +29,7 @@ with open('style.css') as f:
 
 # Row A
 
-st.image(Image.open('luna.jpeg'),width=50)
+# st.image(Image.open('luna.jpeg'),width=50)
 a1, a2, a3 = st.columns(3)
 
 

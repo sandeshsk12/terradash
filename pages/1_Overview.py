@@ -32,7 +32,7 @@ with open('style.css') as f:
 
 # Row A
 
-st.image(Image.open('luna.jpeg'),width=50)
+# st.image(Image.open('luna.jpeg'),width=80)
 a1, a2, a3 = st.columns(3)
 
 price_url = "https://node-api.flipsidecrypto.com/api/v2/queries/8efb6e8a-184b-41e0-af5c-d060ef7ff307/data/latest"
