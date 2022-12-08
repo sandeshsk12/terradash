@@ -18,98 +18,84 @@ from PIL import  Image
 
 
 st.set_page_config(page_title="Data Explorer", layout="wide",initial_sidebar_state="expanded")
-st.markdown('# Introduction')
+st.markdown('# TerraDash')
 st.sidebar.success("select a page above")
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>',unsafe_allow_html=True)
 
-# st.markdown(
-#     """
-# <style>
-# [data-testid="stMetricValue"] {
-#     font-size: 50px;
-# }
-# </style>
-# """,
-#     unsafe_allow_html=True,
-# )
-
-gas_url='https://fcd.terra.dev/v1/txs/gas_prices'
-response=requests.get(gas_url)
-data = response.text
-data_json=json.loads(data)
-data=data_json["uluna"]
-st.write(data)
-
-# Row A
-st.write(str(st.markdown("Gas")))
-a1, a2, a3 = st.columns(3)
-a1.image(Image.open('luna.jpeg'))
-a2.metric(label="Gas", value=data, delta="-8%")
-a3.metric("Humidity", "86%", "4%")
-
-
-fig = px.line(x=[1,2,3,4],y=[1,2,3,4])
-seattle_weather = pd.read_csv('https://raw.githubusercontent.com/tvst/plost/master/data/seattle-weather.csv', parse_dates=['date'])
-stocks = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/stocks_toy.csv')
-
-c1, c2 = st.columns((7,3))
-with c1:
-    st.markdown('### Heatmap')
-    plost.time_hist(
-    data=seattle_weather,
-    date='date',
-    x_unit='week',
-    y_unit='day',
-    color='temp_max',
-    aggregate='median',
-    legend=None)
-with c2:
-    st.markdown('### Bar chart')
-    plost.donut_chart(
-        data=stocks,
-        theta='q2',
-        color='company')
-
-
-# fig.show()
-st.write(fig)
-seattle_weather = pd.read_csv('https://raw.githubusercontent.com/tvst/plost/master/data/seattle-weather.csv', parse_dates=['date'])
-stocks = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/stocks_toy.csv')
-c1, c2 = st.columns((7,3))
-with c1:
-    st.markdown('### Heatmap')
-    fig = px.line(x=[1,2,3,4],y=[1,2,3,4])
-    fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(231,242,240,255)',})
-    st.write(fig)
-with c2:
-    st.markdown('### Bar chart')
-    fig = px.line(x=[1,2,3,4],y=[1,2,3,4])
-    fig.update_layout({'plot_bgcolor': 'rgba(231,242,240,255)','paper_bgcolor': 'rgba(0, 0, 0, 0)',})
-    st.write(fig)
-
-
-url = "https://node-api.flipsidecrypto.com/api/v2/queries/8efb6e8a-184b-41e0-af5c-d060ef7ff307/data/latest"
-df = pd.read_json(url)
-fig = px.line(df,x='HOUR',y='PRICE')
-my_button=list(
-    [
-        dict(args=['y','PRICE'],label='BarPlot',method='restyle'),
-        dict(args=['y','P'],label='Scatterplot',method='restyle')
-    ]
+st.markdown('## Introduction')
+st.markdown(
+    """
+    ### What is LUNA 2.0?
+        As proposed by Kwon, the Terra blockchain underwent a hard fork, with the launch of Terra 2.0 and the old 
+        LUNA tokens being renamed as terra classic (LUNC). Kwon’s fork proposal passed with 65.5% majority approval.
+        The snapshot for Terra 2.0 provided by Kwon gives an idea of how the chain upgrade would work and states that 
+        the new Terra will be created without the algorithmic stablecoin. 
+        The Terra Builders Alliance has provided technical details on integration, 
+        decentralised applications (dApps) migration, and a guide to rebranding the original Terra chain as ‘Terra Classic’.
+        The old token was renamed terra classic (LUNC), and while the original Cosmos chain will continue to operate, 
+        the option to mint or burn coins will be disabled. The new blockchain was launched on 28 May 2022.
+    """
 )
-fig.update_layout(
-    updatemenus=[dict(type='buttons',buttons=my_button,direction='left',
-    pad={'r':0.2,'t':0.1},
-    showactive=True,
-    xanchor='left',x=0.4,
-    yanchor='top',y=0.95)]
-
+st.markdown(
+    """
+    ##  Objective?
+         Rebuild the great Terradash, a dazzling dashboard full of analytic insights providing an overview of the entire Terra ecosystem
+    """
+)
+st.markdown(
+    """
+    ## glossary
+    1. Users : A distinct wallet address. A single human can hold multiple wallets however, the number of wallets are considered as users
+    2. New user : Users who made their first transaction on the given day
+    3. Success ratio : What percentage of transactions are successful.
+    4. Active users : A wallet is considered active in the given week if he/she makes a transaction on atleast 3 days of the given week. 
+    5. Wallet age : The number of months passed since wallet's first transaction
+    """
 )
 
-# fig["layout"].pop("updatemenus")
-fig.update_layout({'plot_bgcolor': 'rgba(231,242,240,255)','paper_bgcolor': 'rgba(0, 0, 0, 0)',})
-st.write(fig)
-st.write(df)
-dcc.RadioItems(['New York City', 'Montreal','San Francisco'], 'Montreal')
+st.markdown(
+    """
+    ## Methodology 
+    Data from Flipside's terra.core tables have been used for building this dashboard. As this is a dashboard bounty, the amount of explaination
+    given is kept to a minimum. 
+    
+    ### Sections
+    1. Overview
+    2. Transactions
+
+        a. Overview of today's transactions
+
+        b. Number of transactions 
+
+        c. Transaction fee per transaction
+
+        d. Transaction fee per week
+
+        e. Transaction fee per block
+
+        f. Average TPS 
+
+        g. Average block time
+
+        h. Transaction success ratio
+
+    3. wallets
+
+        a. Overview of wallets
+
+        b. Users over time 
+
+        c. Active vs All users
+
+        d. New vs Existing users
+
+        e. Wallets age
+    """
+)
+
+
+
+
+
