@@ -24,6 +24,7 @@ st.sidebar.success("select a page above")
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>',unsafe_allow_html=True)
 
+
 st.markdown('## Introduction')
 st.markdown(
     """
@@ -116,6 +117,12 @@ st.markdown(
     """
 )
 
+st.markdown("""
+# Twitter link
+
+https://twitter.com/Sandesh_K_12/status/1600701296381554689?s=20&t=CpYReqiPJAE7K285lK4GLA
+"""
+)
 
 
 
