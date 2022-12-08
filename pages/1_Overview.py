@@ -100,6 +100,22 @@ daily_new_users_fig.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid
 st.write(daily_new_users_fig)
 
 
+st.markdown(
+    """
+    # Resources : 
+    
+    1. Luna Price : https://app.flipsidecrypto.com/velocity/queries/8efb6e8a-184b-41e0-af5c-d060ef7ff307
+
+    2. Gas price : https://docs.terra.money/learn/fees
+
+    3. Transactions : https://app.flipsidecrypto.com/velocity/queries/386e354e-562e-435d-8751-567563957301
+
+    4. Unique wallets : https://app.flipsidecrypto.com/velocity/queries/386e354e-562e-435d-8751-567563957301
+
+    5. New users : https://app.flipsidecrypto.com/velocity/queries/54e00538-842d-407b-b5ce-f8519e0d03bd
+    """
+)
+
 
 
 

@@ -36,9 +36,9 @@ a1, a2, a3 = st.columns(3)
 
 number_of_wallets = "https://node-api.flipsidecrypto.com/api/v2/queries/012648ae-a89d-4504-93eb-68faf37fb394/data/latest"
 number_of_wallets = pd.read_json(number_of_wallets)
-a1.metric("Number of Transactions", number_of_wallets['NUMBER_OF_TRANSACTIONS'])
-a2.metric("Number of blocks", number_of_wallets['NUMBER_OF_BLOCKS'])
-a3.metric("Total Fees (uluna)", (number_of_wallets['TOTAL_FEES']))
+a1.metric("Number of Transactions (This week)", number_of_wallets['NUMBER_OF_TRANSACTIONS'])
+a2.metric("Number of blocks (This week)", number_of_wallets['NUMBER_OF_BLOCKS'])
+a3.metric("Total Fees (uluna) (This week)", (number_of_wallets['TOTAL_FEES']))
 
 
 st.markdown('## Transactions')
@@ -148,6 +148,28 @@ sucess_ratio_fig = px.line(
 sucess_ratio_fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(215,215,215,255)',})
 sucess_ratio_fig.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
 st.write(sucess_ratio_fig)
+
+
+st.markdown(
+    """
+    # Resources : 
+
+    1. Number of transactions : https://app.flipsidecrypto.com/velocity/queries/386e354e-562e-435d-8751-567563957301
+
+    2. Transaction fee per treansaction :https://app.flipsidecrypto.com/velocity/queries/386e354e-562e-435d-8751-567563957301
+
+    3. Transaction fee per week : https://app.flipsidecrypto.com/velocity/queries/386e354e-562e-435d-8751-567563957301
+
+    4. Transaction fee per block : https://app.flipsidecrypto.com/velocity/queries/386e354e-562e-435d-8751-567563957301
+
+    5. Transaction per second : https://app.flipsidecrypto.com/velocity/queries/0dbecbfb-d75e-4c9e-95b0-69ee37d372eb
+
+    6. Block time https://app.flipsidecrypto.com/velocity/queries/e90c0c6c-6ec3-422b-9c0d-3ed04c4aab85
+
+    7. Success ratio : https://app.flipsidecrypto.com/velocity/queries/08d050ee-f687-440c-85c8-8a5bb7279493
+
+    """
+)
 
 
 

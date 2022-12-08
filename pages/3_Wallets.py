@@ -36,8 +36,8 @@ a1, a2, a3 = st.columns(3)
 
 active_wallets = "https://node-api.flipsidecrypto.com/api/v2/queries/d1bdd659-c149-4d01-9c17-3b935dcf7792/data/latest"
 active_wallets = pd.read_json(active_wallets).sort_values(by='DATE',ascending=False)
-a1.metric('Number of users',active_wallets.iloc[0,2])
-a2.metric('Number of Active users',active_wallets.iloc[0,1])
+a1.metric('Number of users (This week) ',active_wallets.iloc[0,2])
+a2.metric('Number of Active users (This week)',active_wallets.iloc[0,1])
 
 
 new_users = "https://node-api.flipsidecrypto.com/api/v2/queries/a8409feb-4c91-44b5-ae9c-f011eab30012/data/latest"
@@ -106,3 +106,20 @@ age_of_wallets = px.pie(
 age_of_wallets.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)','paper_bgcolor': 'rgba(215,215,215,255)',})
 age_of_wallets.update_layout(xaxis=dict(showgrid=False),yaxis=dict(showgrid=False))
 st.write(age_of_wallets)
+
+
+st.markdown(
+    """
+    # Resources 
+
+    1. Number of users : https://app.flipsidecrypto.com/velocity/queries/386e354e-562e-435d-8751-567563957301
+
+    2. Number of new users : https://app.flipsidecrypto.com/velocity/queries/54e00538-842d-407b-b5ce-f8519e0d03bd
+
+    3. Active users : https://app.flipsidecrypto.com/velocity/queries/d1bdd659-c149-4d01-9c17-3b935dcf7792
+
+    4. New vs existing users : https://app.flipsidecrypto.com/velocity/queries/a8409feb-4c91-44b5-ae9c-f011eab30012
+
+    5. Wallet age : https://app.flipsidecrypto.com/velocity/queries/3f8c6385-7f5e-4ce0-a265-d0a983859443
+    """
+)
